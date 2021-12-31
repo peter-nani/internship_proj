@@ -5,7 +5,7 @@ from . models import Person, Students
 from . forms import PersonForm, SignupForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 
 # Create your views here.
 @login_required(login_url='login')
@@ -75,6 +75,8 @@ def loginn(request):
 		user = authenticate(request,username = username,password = password)
 		if user is not None:
 			login(request,user)
+			if request.user.is_authenticated:
+				messages.info(request, "Welcome...")
 			return redirect('/app/home')
 	return render(request, 'login.html')
 
