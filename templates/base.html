@@ -10,6 +10,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 
 
 </head>
@@ -41,21 +44,20 @@
 	</nav>
 
 
-{% block default_messages %}
-{% if messages %}
 
-    {% for message in messages %}
-<div class="alert alert-primary" role="alert">
-  {{message}}
-</div>
-   
-    {% endfor %}
-{% endif %}
-{% endblock default_messages %}
 
 {% block content %}
 
 {% endblock content %}
+
+
+<script type="text/javascript">
+	{% if messages %}
+		{% for message in messages %}
+			swal("{{message}}");
+		{% endfor %}
+	{% endif %}
+</script>
 
 </body>
 </html>

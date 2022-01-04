@@ -30,6 +30,7 @@ def update(request,id):#GET#PUT#POST
 
 def delete(request, id):
 	Person.objects.get(pk=id).delete()
+	messages.info(request,"data deleted")
 	return render(request, 'delete.html')
 	#return redirect('/app/home')
 
@@ -76,7 +77,8 @@ def loginn(request):
 		if user is not None:
 			login(request,user)
 			if request.user.is_authenticated:
-				messages.info(request, "Welcome...")
+				username = request.user.username
+				messages.info(request, "Welcome "+username)
 			return redirect('/app/home')
 	return render(request, 'login.html')
 
