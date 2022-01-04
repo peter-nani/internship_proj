@@ -9,6 +9,7 @@ class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     roll_no = models.IntegerField(blank = True, null=True)
+    img = models.ImageField(null=True, blank=True, upload_to="images/")
     def __str__(self):
         return self.first_name
 

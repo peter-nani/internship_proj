@@ -47,7 +47,7 @@ def create(request):#POST
 	if request.method == 'POST':#TRUE
 		# breakpoint()
 		print(request.POST)
-		form = PersonForm(request.POST)
+		form = PersonForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
 			print('data saved')
@@ -83,7 +83,7 @@ def loginn(request):
 
 def logoutt(request):#get
 	logout(request)
-	return redirect('/login')
+	return redirect('/')
 
 
 

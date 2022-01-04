@@ -16,11 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('app.urls')),
-    path('login/', views.loginn, name='login'),
+    path('', views.loginn, name='login'),
     path('logout/', views.logoutt, name='logout'),
     path('signup/', views.signup, name='signup'),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
